@@ -1,0 +1,62 @@
+{
+  "name": "onvif-viewer",
+  "version": "1.0.0",
+  "description": "ONVIF Camera Viewer with PTZ Control",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable",
+    "build:installer": "electron-builder --win nsis",
+    "build:portable": "electron-builder --win portable",
+    "build:linux": "electron-builder --linux",
+    "build:mac": "electron-builder --mac"
+  },
+  "author": "real.wk@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "node-rtsp-stream": "^0.0.9",
+    "onvif": "^0.6.2",
+    "ws": "^8.16.0"
+  },
+  "build": {
+    "appId": "com.onvif.viewer",
+    "productName": "ONVIF Viewer",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "preload.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/cctv-camera.ico"
+    },
+    "portable": {
+      "artifactName": "ONVIF-Viewer.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "ONVIF-Viewer-Setup.exe"
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  }
+}

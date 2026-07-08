@@ -1,0 +1,225 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #2d3748;
+    padding: 15px 20px;
+    border-bottom: 3px solid #4a5568;
+    flex-shrink: 0;
+}
+
+.connection-panel {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.input-wrapper {
+    flex: 2;
+    min-width: 300px;
+    position: relative;
+}
+
+.camera-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #4a5568;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    color: #2d3748;
+    background: white;
+}
+
+.camera-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.camera-input:disabled {
+    background: #e2e8f0;
+    cursor: not-allowed;
+}
+
+/* Стили для datalist (выпадающий список) */
+.camera-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.btn-connect {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-connect:hover:not(:disabled) {
+    background: #38a169;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+}
+
+.btn-connect.disconnect {
+    background: #f56565;
+}
+
+.btn-connect.disconnect:hover:not(:disabled) {
+    background: #e53e3e;
+    box-shadow: 0 4px 12px rgba(245, 101, 101, 0.4);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.video-container {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    background: #1a202c;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#videoCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.status-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 10;
+    transition: background 0.3s;
+    pointer-events: none;
+}
+
+.ptz-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: #f7fafc;
+    border-top: 2px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.ptz-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #cbd5e0;
+    border-radius: 8px;
+    background: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    user-select: none;
+    color: #2d3748;
+}
+
+.ptz-btn:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.ptz-btn:active:not(:disabled) {
+    transform: translateY(0);
+    background: #5a67d8;
+}
+
+.ptz-btn.active:not(:disabled) {
+    background: #667eea;
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ptz-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .connection-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-wrapper {
+        min-width: auto;
+    }
+
+    .ptz-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .ptz-controls {
+        gap: 5px;
+        padding: 10px;
+    }
+}

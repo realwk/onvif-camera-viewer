@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self'; 
+               script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; 
+               worker-src 'self' blob:;
+               style-src 'self' 'unsafe-inline'; 
+               img-src 'self' blob: data:; 
+               connect-src ws: http://localhost:*;
+               media-src blob:;">
+    <title>ONVIF Camera Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="connection-panel">
+                <div class="input-wrapper">
+                    <input type="text" id="cameraInput" class="camera-input"
+                           placeholder="login:password@ip:port  или  ip"
+                           list="cameraHistory" autocomplete="off">
+                    <datalist id="cameraHistory">
+                        <!-- Опции добавляются динамически -->
+                    </datalist>
+                </div>
+                <button id="connectBtn" class="btn btn-connect">▶ Подключить</button>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <canvas id="videoCanvas" width="800" height="450"></canvas>
+            <div id="statusMessage" class="status-message">Отключено</div>
+        </div>
+
+        <div class="ptz-controls">
+            <button class="ptz-btn" data-direction="left"  title="Влево (A/←)">◀</button>
+            <button class="ptz-btn" data-direction="right" title="Вправо (D/→)">▶</button>
+            <button class="ptz-btn" data-direction="up"    title="Вверх (W/↑)">▲</button>
+            <button class="ptz-btn" data-direction="down"  title="Вниз (S/↓)">▼</button>
+            <button id="muteBtn" class="ptz-btn" title="Звук">🔈</button>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
