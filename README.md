@@ -48,7 +48,7 @@
 
 ```bash
 git clone https://github.com/realwk/onvif-camera-viewer.git
-cd onvif-viewer
+cd onvif-camera-viewer
 ```
 
 ### 2. Установить зависимости
