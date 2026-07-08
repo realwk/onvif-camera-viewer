@@ -47,7 +47,7 @@
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone https://github.com/ваш-username/onvif-viewer.git
+git clone https://github.com/realwk/onvif-camera-viewer.git
 cd onvif-viewer
 ```
 
