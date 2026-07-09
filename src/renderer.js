@@ -406,6 +406,8 @@
         try {
             const cameras = await window.electronAPI.getSavedCameras();
             updateCameraHistory(cameras);
+            if (cameras && cameras.length > 0)
+                cameraInput.value = cameras[0];
         } catch (err) {
             console.error('Error loading cameras:', err);
         }
