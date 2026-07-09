@@ -47,8 +47,8 @@
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone https://github.com/ваш-username/onvif-viewer.git
-cd onvif-viewer
+git clone https://github.com/realwk/onvif-camera-viewer.git
+cd onvif-camera-viewer
 ```
 
 ### 2. Установить зависимости
